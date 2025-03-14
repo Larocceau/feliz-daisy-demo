@@ -3,8 +3,12 @@
 open Feliz
 open Browser.Dom
 open Fable.Core.JsInterop
+open Elmish
+open Elmish.React
+open App.Components
 
+importSideEffects "./index.css"
 
-
-let root = ReactDOM.createRoot (document.getElementById "root")
-root.render (App.Components.main)
+Program.mkProgram init update view
+|> Program.withReactSynchronous "root"
+|> Program.run
