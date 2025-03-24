@@ -17,10 +17,10 @@ type View =
     member this.icon =
         Html.i [
             prop.classes [
-                "fa-solid"
+                "fa"
                 match this with
                 | List -> "fa-list"
-                | Create -> "pen-to-square"
+                | Create -> "fa-pen-to-square"
             ]
         ]
 
