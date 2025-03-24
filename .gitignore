@@ -30,3 +30,6 @@ src/bin
 
 ## ignore fable modules
 src/fable_modules
+
+## ignore traspiled fable
+src/**/*.fs.js

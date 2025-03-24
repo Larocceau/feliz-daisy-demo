@@ -14,6 +14,16 @@ type View =
         | Create -> "Create"
         | List -> "List"
 
+    member this.icon =
+        Html.i [
+            prop.classes [
+                "fa-solid"
+                match this with
+                | List -> "fa-list"
+                | Create -> "pen-to-square"
+            ]
+        ]
+
     static member All = [ Create; List ]
 
 
@@ -67,9 +77,11 @@ let update msg model =
 let dock setView =
     Daisy.dock [
         dock.xl
+        color.bgNeutral
+        color.textNeutralContent
         prop.children [
             for view in View.All do
-                Html.button [ prop.text view.Description; prop.onClick (fun _ -> setView view) ]
+                Html.button [ prop.children [ view.icon ]; prop.onClick (fun _ -> setView view) ]
 
 
         ]
@@ -86,18 +98,27 @@ let listView (todos: Todo list) =
 let view model dispatch =
     Html.div [
         prop.children [
-            Daisy.card [
+            Html.div [
+                prop.className "flex justify-center items-center h-dvh"
                 prop.children [
-                    Daisy.cardTitle [ prop.text model.View.Description ]
-                    Daisy.cardBody [
-                        match model.View with
-                        | List -> listView model.Todos
-                        | Create -> Html.p $"TODO: create view"
+                    Daisy.card [
+                        card.border
+                        color.bgBase300
+                        color.textBaseContent
+                        prop.children [
+                            Daisy.cardBody [
+                                Daisy.cardTitle [ prop.text model.View.Description ]
+                                match model.View with
+                                | List -> listView model.Todos
+                                | Create -> Html.p $"TODO: create view"
+                            ]
+                        ]
                     ]
+
                 ]
+
             ]
 
-            Daisy.button.button [ button.outline; button.primary; button.lg; prop.text "My button" ]
 
             dock (SetView >> dispatch)
         ]
