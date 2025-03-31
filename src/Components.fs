@@ -74,7 +74,7 @@ type msg =
 let init () =
     {
         SuccessAlert = false
-        View = Create
+        View = List
         Todos = [
             {
                 Category = Personal
