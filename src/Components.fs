@@ -242,7 +242,7 @@ let listView (todos: Todo list) (setFinished: int -> bool -> unit) (clearFinishe
             |> List.mapi (fun index todo ->
                 Daisy.listRow [
                     Daisy.checkbox [
-                        prop.value todo.Finished
+                        prop.isChecked todo.Finished
                         prop.onChange (fun state -> setFinished index state)
                     ]
                     Html.text todo.Description
