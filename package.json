@@ -1,5 +1,5 @@
 {
-  "name": "fsharpadvent2024",
+  "name": "Feliz.DaisyUi.demo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
@@ -33,8 +34,7 @@
     "jsdom": "^22.1.0",
     "tailwindcss": "^4.0.14",
     "vite": "^6.0.1",
-    "vite-plugin-fable": "^0.0.32",
-    "vitest": "^2.1.8"
+    "vite-plugin-fable": "^0.0.32"
   },
   "engines": {
     "node": ">=18"

@@ -21,6 +21,7 @@ export default defineConfig({
       jsxRuntime: "classic"
     })
   ],
+  base: "/feliz-daisy-demo/",
   root: "./src",
   build: {
     outDir: "../dist",
