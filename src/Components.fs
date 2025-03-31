@@ -196,7 +196,7 @@ let CreateView saveTodo =
             Daisy.floatingLabel [
                 Html.span "Description"
                 Daisy.input [
-                    prop.placeholder "Description"
+                    prop.placeholder "Eat playdough"
                     prop.value description
                     prop.onChange setDescription
                 ]
